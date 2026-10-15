@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "name": "MXdm",
+    "version": "1.0.0",
+    "useNativePlayer": true,
+    "author": "senran-N",
+    "lastUpdate": 1792087827216
+  },
+  {
+    "name": "GiriGiriLove",
+    "version": "1.0.0",
+    "useNativePlayer": true,
+    "author": "senran-N",
+    "lastUpdate": 1792087827216
+  },
+  {
+    "name": "7sefun",
+    "version": "1.0.0",
+    "useNativePlayer": true,
+    "author": "senran-N",
+    "lastUpdate": 1792087827216
+  }
+]

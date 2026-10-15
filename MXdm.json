@@ -1,0 +1,71 @@
+{
+  "type": "anime",
+  "api": 1,
+  "id": "cc.dcc3",
+  "name": "MXdm",
+  "version": "1.0.0",
+  "baseURL": "https://www.dcc3.com",
+  "search": {
+    "mode": "xpath",
+    "request": {
+      "url": "/search.php?wd=@keyword"
+    },
+    "listPath": "//div[@class='search container']/ul/li",
+    "fields": {
+      "id": {
+        "path": "./a[contains(@class,'cover')]",
+        "attribute": "href"
+      },
+      "title": {
+        "path": "./a[contains(@class,'cover')]",
+        "attribute": "title"
+      },
+      "url": {
+        "path": "./a[contains(@class,'cover')]",
+        "attribute": "href"
+      },
+      "cover": {
+        "path": ".//img",
+        "attribute": "data-original"
+      }
+    }
+  },
+  "roads": {
+    "mode": "xpath",
+    "request": {
+      "url": "@url"
+    },
+    "roadNamesPath": "//div[@class='tabs']/a",
+    "listPath": "//ul[@class='list6']",
+    "episodes": {
+      "listPath": ".//li/a",
+      "fields": {
+        "id": {
+          "path": ".",
+          "attribute": "href"
+        },
+        "title": {
+          "path": "."
+        },
+        "url": {
+          "path": ".",
+          "attribute": "href"
+        }
+      }
+    }
+  },
+  "play": {
+    "mode": "xpath",
+    "request": {
+      "url": "@url"
+    },
+    "listPath": "//body",
+    "fields": {
+      "url": {
+        "path": "//script[contains(text(),'Artplayer')]",
+        "regex": "url:\\s*'([^']+)'"
+      }
+    }
+  },
+  "author": "senran-N"
+}

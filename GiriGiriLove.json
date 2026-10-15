@@ -1,0 +1,74 @@
+{
+  "type": "anime",
+  "api": 1,
+  "id": "cc.girigirilove",
+  "name": "GiriGiriLove",
+  "version": "1.0.0",
+  "baseURL": "https://ani.girigirilove.com",
+  "search": {
+    "mode": "api",
+    "request": {
+      "method": "GET",
+      "url": "/index.php/ajax/suggest",
+      "query": {
+        "mid": "1",
+        "wd": "@keyword"
+      }
+    },
+    "listPath": "$.list[*]",
+    "fields": {
+      "id": {
+        "path": "$.id",
+        "template": "https://ani.girigirilove.com/GV@value/"
+      },
+      "title": "$.name",
+      "url": {
+        "path": "$.id",
+        "template": "https://ani.girigirilove.com/GV@value/"
+      },
+      "cover": "$.pic"
+    }
+  },
+  "roads": {
+    "mode": "xpath",
+    "request": {
+      "url": "@url"
+    },
+    "roadNamesPath": "//a[@class='swiper-slide']",
+    "listPath": "//div[@class='anthology-list-box none']",
+    "episodes": {
+      "listPath": ".//ul/li/a",
+      "fields": {
+        "id": {
+          "path": ".",
+          "attribute": "href"
+        },
+        "title": {
+          "path": "."
+        },
+        "url": {
+          "path": ".",
+          "attribute": "href"
+        }
+      }
+    }
+  },
+  "play": {
+    "mode": "scriptJson",
+    "request": {
+      "url": "@url"
+    },
+    "scriptMarker": "player_aaaa",
+    "listPath": "$",
+    "fields": {
+      "url": {
+        "path": "$.url",
+        "decode": [
+          "base64",
+          "percent"
+        ]
+      }
+    }
+  },
+  "author": "senran-N"
+}

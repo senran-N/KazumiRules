@@ -1,0 +1,87 @@
+{
+  "type": "anime",
+  "api": 1,
+  "id": "cc.sefun7",
+  "name": "7sefun",
+  "version": "1.0.0",
+  "baseURL": "https://www.7sefun.top",
+  "search": {
+    "mode": "xpath",
+    "request": {
+      "url": "/vodsearch/-------------.html?wd=@keyword"
+    },
+    "listPath": "//a[contains(@class,'video-wrapper')]",
+    "fields": {
+      "id": {
+        "path": ".",
+        "attribute": "href"
+      },
+      "title": {
+        "path": ".//img",
+        "attribute": "alt"
+      },
+      "url": {
+        "path": ".",
+        "attribute": "href"
+      },
+      "cover": {
+        "path": ".//img",
+        "attribute": "src"
+      }
+    }
+  },
+  "roads": {
+    "mode": "xpath",
+    "request": {
+      "url": "@url"
+    },
+    "roadNamesPath": "//ul[contains(@class,'chat-stream-bfqs')]/li",
+    "listPath": "//div[contains(@class,'vod-play-list-container')]",
+    "episodes": {
+      "listPath": ".//a",
+      "fields": {
+        "id": {
+          "path": ".",
+          "attribute": "href"
+        },
+        "title": {
+          "path": ".",
+          "attribute": "title"
+        },
+        "url": {
+          "path": ".",
+          "attribute": "href"
+        }
+      }
+    }
+  },
+  "play": {
+    "mode": "scriptJson",
+    "request": {
+      "url": "@url"
+    },
+    "scriptMarker": "player_aaaa",
+    "listPath": "$",
+    "fields": {
+      "url": {
+        "path": "$.url",
+        "decode": [
+          "base64",
+          "percent"
+        ]
+      }
+    }
+  },
+  "playResolve": {
+    "mode": "scriptJson",
+    "request": {
+      "url": "@url"
+    },
+    "scriptMarker": "player_aaaa",
+    "listPath": "$",
+    "fields": {
+      "url": "$.url"
+    }
+  },
+  "author": "senran-N"
+}
